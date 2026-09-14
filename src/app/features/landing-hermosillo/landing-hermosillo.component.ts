@@ -2426,16 +2426,15 @@ export class LandingHermosilloComponent implements OnInit {
   @Input() worldImage = 'assets/images/city/hermosillo-hero.webp';
   @Input() worldImageAlt = 'Mesa de Dinner in the Sky suspendida junto a la bandera de México';
 
-  // Ubicación general confirmada por el cliente: Hermosillo, Sonora. La sede
-  // exacta (dirección/mapa) todavía no está confirmada — se avisa al
-  // huésped que se le compartirá antes de su reservación, en vez de
-  // inventar una dirección. Cuando llegue la sede exacta, se agrega aquí
-  // (venueAddress/venueMapImage/venueImage) sin tocar el resto.
-  @Input() venueText = 'La experiencia se realizará en Hermosillo, Sonora. Te haremos llegar la ubicación exacta antes de tu reservación.';
+  // Copy de lanzamiento provista por el cliente: la sede exacta todavía no
+  // se revela a propósito (efecto "reveal" de marca), no es un dato
+  // faltante por descuido. La sede exacta (dirección/mapa) se agrega aquí
+  // (venueAddress/venueMapImage/venueImage) cuando el cliente la revele.
+  @Input() venueText = 'Una experiencia de altura merece una sede majestuosa. En pocos días revelaremos el espectacular lugar que nos recibirá en Hermosillo.';
   @Input() venueAddress = '';
   @Input() venueMapImage = '';
   @Input() venueImage = '';
-  @Input() venueImageAlt = 'Ubicación exacta — se confirma antes de tu reservación';
+  @Input() venueImageAlt = 'La sede se revela muy pronto';
 
   @Input() convBarNote = 'Cupo limitado. Asegura tu lugar y vive Hermosillo desde el cielo.';
 
