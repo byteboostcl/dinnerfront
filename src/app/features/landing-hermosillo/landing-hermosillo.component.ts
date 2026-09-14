@@ -251,7 +251,7 @@ export interface HermosilloTicketPackage {
                  spans the full grid width on desktop — sharing a row with a
                  normal-height card left an awkward empty gap next to the
                  shorter neighbor when this was still a 2-col grid item. -->
-            <article class="tj-card tj-card--feature">
+            <article class="tj-card tj-card--feature" [id]="card.id">
               <div class="tj-card__eyebrow">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#b8913d" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
                   <path d="M7 3v7a2 2 0 0 0 4 0V3M9 3v18M16 3c-1.5 1-2.5 3.2-2.5 6 0 2.4 1 3 2.5 3v9"></path>
@@ -1082,6 +1082,7 @@ export interface HermosilloTicketPackage {
       display: flex;
       flex-direction: column;
       padding: 20px 20px 22px;
+      scroll-margin-top: 76px;
     }
 
     .tj-card--feature .tj-card__title {
