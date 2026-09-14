@@ -346,7 +346,16 @@ export interface HermosilloTicketPackage {
         </div>
       </section>
 
-      <!-- DETAIL: MENÚ -->
+      <!-- DETAIL: MENÚ — comentada a pedido (2026-09-14): se quita de la
+           página en vivo por ahora, sin borrar el código, para poder
+           reactivarla fácilmente cuando el equipo lo pida. NOTA: los links
+           "Menú" del header/drawer/footer (href="#menu") y la tarjeta
+           "Menú" de discoverCards siguen apuntando a este id — mientras
+           esta sección esté comentada, ese click no hace nada (no hay
+           elemento #menu que encontrar, scrollToAnchor no revienta, solo
+           no navega a ningún lado). No se tocaron esos links todavía
+           porque no fue parte de lo pedido — avisar si también hay que
+           quitarlos/comentarlos.
       <section class="tj-detail tj-detail--dark" id="menu">
         <div class="tj-detail__copy">
           <div class="tj-eyebrow tj-eyebrow--light">DESCUBRE</div>
@@ -372,6 +381,7 @@ export interface HermosilloTicketPackage {
           }
         </div>
       </section>
+      -->
 
       <!-- DETAIL: UBICACIÓN — movida arriba (justo después del menú, antes de
            comprar boletos) a pedido: el cliente debe ver la sede confirmada
