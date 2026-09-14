@@ -1,0 +1,810 @@
+// ===== GLOBAL STYLES & VARIABLES =====
+// This file contains all design tokens from the original Dinner in the Sky website
+// Last Updated: July 3, 2026
+// Status: Production Ready for Pixel-Perfect Cloning
+
+// Self-hosted (not Google Fonts CDN): the hero H1 uses Anton above the fold, and a
+// stable local URL means it can be preloaded reliably. Google's CDN serves a
+// different file hash per requesting User-Agent, which silently breaks a
+// preload — the browser fetches one hash via <link preload> and a *different*
+// hash via the CSS @font-face, wasting the preload and re-introducing the FOUT
+// jump this exists to prevent.
+@font-face {
+  font-family: 'Anton';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/assets/fonts/anton-v27-latin-400.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+// ===== COLOR PALETTE (extracted from original site CSS) =====
+// Primary Colors
+$color-primary: #0d3570;       // Button/nav blue (--ptn-blue)
+$color-primary-light: #1E63C6; // Bright blue (--blue)
+$color-primary-dark: #082848;  // Button border / deepest navy
+$color-ink: #2c4871;           // Hero title navy (Bebas fill)
+$color-brand-navy: #0D2545;    // Brand ink (--ds-brand-blue)
+$color-sand: #e8bf96;          // Secondary/sand accent (--ptn-sand)
+
+// Neutral Colors
+$color-dark-bg: #0D2545;
+$color-dark-secondary: #162847;
+$color-white: #ffffff;
+$color-light-gray: #e0e0e0;
+$color-gray: #5B7A9F;
+$color-dark-gray: #333333;
+
+// Brand Colors
+$color-whatsapp: #25D366;
+$color-whatsapp-hover: #1ebc3b;
+
+// Status Colors
+$color-error: #ff3333;
+$color-success: #00c853;
+$color-warning: #ffa500;
+$color-info: #2196f3;
+
+// Semantic Color Aliases
+$color-text-primary: $color-white;
+$color-text-secondary: $color-light-gray;
+$color-text-muted: $color-gray;
+$color-bg-primary: $color-dark-bg;
+$color-bg-secondary: $color-dark-secondary;
+$color-accent: $color-primary;
+$color-accent-hover: $color-primary-light;
+
+// Legacy Aliases
+$color-gold: $color-primary;
+$color-gold-light: $color-primary-light;
+
+// ===== TYPOGRAPHY (extracted from original site) =====
+// Font Families
+$font-family-primary: 'Montserrat', 'Inter', -apple-system, BlinkMacSystemFont,
+  'Segoe UI', 'Helvetica Neue', sans-serif;
+$font-family-heading: 'Montserrat', 'Inter', -apple-system, BlinkMacSystemFont,
+  'Segoe UI', sans-serif;
+$font-family-display: 'Bebas Neue', Impact, 'Arial Narrow', sans-serif;
+$font-family-mono: 'Menlo', 'Monaco', 'Courier New', monospace;
+
+// Font Sizes
+$font-size-xs: 12px;
+$font-size-sm: 14px;
+$font-size-base: 16px;
+$font-size-lg: 18px;
+$font-size-xl: 20px;
+$font-size-2xl: 24px;
+$font-size-3xl: 28px;
+$font-size-4xl: 36px;
+$font-size-5xl: 48px;
+$font-size-6xl: 64px;
+
+// Font Weights
+$font-weight-light: 300;
+$font-weight-regular: 400;
+$font-weight-medium: 500;
+$font-weight-semibold: 600;
+$font-weight-bold: 700;
+$font-weight-extrabold: 800;
+
+// Line Heights
+$line-height-tight: 1.2;
+$line-height-snug: 1.4;
+$line-height-normal: 1.6;
+$line-height-relaxed: 1.8;
+$line-height-loose: 2;
+
+// Letter Spacing
+$letter-spacing-tight: -0.02em;
+$letter-spacing-normal: 0;
+$letter-spacing-wide: 0.02em;
+
+// ===== SPACING SCALE =====
+// All spacing values follow a consistent 4px base unit
+$spacing-0: 0;
+$spacing-xs: 4px;
+$spacing-sm: 8px;
+$spacing-md: 16px;
+$spacing-lg: 24px;
+$spacing-xl: 32px;
+$spacing-2xl: 48px;
+$spacing-3xl: 64px;
+$spacing-4xl: 80px;
+$spacing-5xl: 96px;
+$spacing-6xl: 128px;
+
+// Spacing Aliases
+$gap-sm: $spacing-sm;
+$gap-md: $spacing-md;
+$gap-lg: $spacing-lg;
+$gap-xl: $spacing-xl;
+$gap-2xl: $spacing-2xl;
+
+$margin-sm: $spacing-sm;
+$margin-md: $spacing-md;
+$margin-lg: $spacing-lg;
+$margin-xl: $spacing-xl;
+$margin-2xl: $spacing-2xl;
+
+$padding-sm: $spacing-sm;
+$padding-md: $spacing-md;
+$padding-lg: $spacing-lg;
+$padding-xl: $spacing-xl;
+$padding-2xl: $spacing-2xl;
+
+// ===== BREAKPOINTS =====
+// Mobile-first responsive design
+$breakpoint-mobile: 390px;
+$breakpoint-tablet: 768px;
+$breakpoint-desktop: 1024px;
+$breakpoint-wide: 1440px;
+$breakpoint-ultra: 1920px;
+
+// ===== BORDERS & RADIUS =====
+$border-width-thin: 1px;
+$border-width-base: 2px;
+$border-width-thick: 3px;
+
+$border-radius-none: 0;
+$border-radius-xs: 2px;
+$border-radius-sm: 4px;
+$border-radius-md: 8px;
+$border-radius-lg: 12px;
+$border-radius-xl: 16px;
+$border-radius-2xl: 24px;
+$border-radius-full: 50%;
+$border-radius-circle: 50%;
+
+// Border Aliases
+$rounded-sm: $border-radius-sm;
+$rounded-md: $border-radius-md;
+$rounded-lg: $border-radius-lg;
+$rounded-full: $border-radius-full;
+
+// ===== SHADOWS =====
+// Box Shadows
+$shadow-none: none;
+$shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.05);
+$shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.12);
+$shadow-md: 0 4px 12px rgba(0, 0, 0, 0.15);
+$shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.2);
+$shadow-xl: 0 12px 32px rgba(0, 0, 0, 0.3);
+$shadow-2xl: 0 20px 48px rgba(0, 0, 0, 0.4);
+
+// Inset Shadows
+$shadow-inset: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+
+// ===== TRANSITIONS & ANIMATIONS =====
+// Duration
+$transition-duration-fast: 0.15s;
+$transition-duration-base: 0.3s;
+$transition-duration-slow: 0.5s;
+$transition-duration-slower: 0.7s;
+
+// Easing Functions
+$transition-timing-linear: linear;
+$transition-timing-ease-in: ease-in;
+$transition-timing-ease-out: ease-out;
+$transition-timing-ease-in-out: ease-in-out;
+$transition-timing-cubic-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+$transition-timing-cubic-bounce: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+
+// Composite Transitions
+$transition-fast: $transition-duration-fast $transition-timing-ease-in-out;
+$transition-base: $transition-duration-base $transition-timing-ease-in-out;
+$transition-slow: $transition-duration-slow $transition-timing-ease-in-out;
+$transition-slower: $transition-duration-slower $transition-timing-ease-in-out;
+
+// ===== Z-INDEX SCALE =====
+// Organized z-index hierarchy for layering
+$z-index-dropdown: 1000;
+$z-index-sticky: 1020;
+$z-index-fixed: 1030;
+$z-index-modal-backdrop: 1040;
+$z-index-modal: 1050;
+$z-index-popover: 1060;
+$z-index-tooltip: 1070;
+
+// Header & Navigation
+$z-index-header: 1000;
+$z-index-nav: 999;
+$z-index-submenu: 990;
+
+// Content
+$z-index-content: 1;
+$z-index-backdrop: 0;
+
+// ===== COMPONENT-SPECIFIC VARIABLES =====
+
+// HEADER / NAVBAR
+$header-height: 72px;
+$header-height-scrolled: 56px;
+$header-padding: $spacing-md $spacing-lg;
+$header-padding-mobile: $spacing-sm $spacing-md;
+$header-bg: rgba(15, 15, 15, 0.95);
+$header-backdrop-filter: blur(10px);
+$header-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+
+$navbar-gap: $spacing-xl;
+$navbar-gap-mobile: $spacing-md;
+
+$logo-height: 40px;
+$logo-height-mobile: 32px;
+
+$nav-link-font-size: $font-size-base;
+$nav-link-font-weight: $font-weight-medium;
+$nav-link-color: $color-white;
+$nav-link-color-hover: $color-primary;
+
+// BUTTONS
+$button-padding: $spacing-md $spacing-xl;
+$button-padding-sm: $spacing-sm $spacing-md;
+$button-padding-lg: $spacing-lg $spacing-2xl;
+$button-font-size: $font-size-base;
+$button-font-weight: $font-weight-semibold;
+$button-border-radius: $border-radius-md;
+$button-cursor: pointer;
+
+$button-primary-bg: $color-primary;
+$button-primary-color: $color-dark-bg;
+$button-primary-bg-hover: $color-primary-light;
+
+$button-secondary-bg: transparent;
+$button-secondary-color: $color-white;
+$button-secondary-border: 2px solid $color-white;
+$button-secondary-bg-hover: $color-white;
+$button-secondary-color-hover: $color-dark-bg;
+
+$button-whatsapp-bg: $color-whatsapp;
+$button-whatsapp-color: $color-white;
+$button-whatsapp-bg-hover: $color-whatsapp-hover;
+
+// HERO SECTION
+$hero-min-height: 100vh;
+$hero-padding: $spacing-4xl $spacing-lg;
+$hero-padding-mobile: $spacing-2xl $spacing-md;
+$hero-content-max-width: 800px;
+$hero-bg: linear-gradient(135deg, $color-dark-bg 0%, $color-dark-secondary 100%);
+$hero-overlay: linear-gradient(
+  135deg,
+  rgba($color-primary, 0.1),
+  rgba($color-primary, 0.05)
+);
+$hero-overlay-opacity: 0.3;
+
+$hero-title-font-size: $font-size-5xl;
+$hero-title-font-size-mobile: $font-size-4xl;
+$hero-title-color: $color-white;
+$hero-title-weight: $font-weight-bold;
+
+$hero-subtitle-font-size: $font-size-2xl;
+$hero-subtitle-font-size-mobile: $font-size-lg;
+$hero-subtitle-color: $color-primary;
+$hero-subtitle-weight: $font-weight-medium;
+
+// CARDS
+$card-bg: $color-dark-secondary;
+$card-border-radius: $border-radius-lg;
+$card-shadow: $shadow-none;
+$card-shadow-hover: $shadow-lg;
+$card-padding: $spacing-lg;
+
+// City Cards Specific
+$city-card-bg: $color-dark-secondary;
+$city-card-border-radius: $border-radius-lg;
+$city-badge-bg: rgba($color-primary, 0.9);
+$city-badge-color: $color-dark-bg;
+$city-badge-padding: $spacing-sm $spacing-md;
+
+// SECTIONS
+$section-padding: $spacing-4xl $spacing-lg;
+$section-padding-mobile: 38px $spacing-md;
+
+$section-cities-bg: $color-dark-bg;
+$section-experience-bg: $color-dark-secondary;
+$section-impact-bg: $color-dark-bg;
+
+// CONTAINERS
+$container-max-width: 1440px;
+$container-padding: 0 $spacing-lg;
+$container-padding-mobile: 0 $spacing-md;
+
+// GRID
+$grid-gap: $spacing-xl;
+$grid-gap-mobile: $spacing-lg;
+
+$grid-3-cols: 3;
+$grid-3-cols-tablet: 2;
+$grid-3-cols-mobile: 1;
+
+// FOOTER
+$footer-bg: $color-dark-secondary;
+$footer-color: $color-light-gray;
+$footer-padding: $spacing-3xl $spacing-lg $spacing-2xl;
+$footer-padding-mobile: $spacing-2xl $spacing-md $spacing-xl;
+$footer-margin-top: $spacing-4xl;
+
+$footer-grid-cols: 4;
+$footer-grid-cols-tablet: 2;
+$footer-grid-cols-mobile: 1;
+
+$footer-link-color: $color-light-gray;
+$footer-link-color-hover: $color-primary;
+
+// GALLERY
+$gallery-gap: $spacing-md;
+
+// ===== OPACITY VALUES =====
+$opacity-0: 0;
+$opacity-25: 0.25;
+$opacity-50: 0.5;
+$opacity-75: 0.75;
+$opacity-100: 1;
+
+// ===== UTILITY TRANSITIONS =====
+// Transitions
+$transition-all: all $transition-duration-base $transition-timing-ease-in-out;
+$transition-color: color $transition-duration-base $transition-timing-ease-in-out;
+$transition-background: background-color $transition-duration-base
+  $transition-timing-ease-in-out;
+$transition-transform: transform $transition-duration-base
+  $transition-timing-ease-in-out;
+$transition-opacity: opacity $transition-duration-base
+  $transition-timing-ease-in-out;
+$transition-shadow: box-shadow $transition-duration-base
+  $transition-timing-ease-in-out;
+
+// Transforms
+$transform-scale-sm: scale(0.95);
+$transform-scale-md: scale(1.05);
+$transform-scale-lg: scale(1.1);
+$transform-translate-up-sm: translateY(-2px);
+$transform-translate-up-md: translateY(-4px);
+$transform-translate-up-lg: translateY(-8px);
+
+// ===== MIXIN HELPERS =====
+
+// Media Query Mixins
+@mixin media-tablet {
+  @media (max-width: $breakpoint-tablet) {
+    @content;
+  }
+}
+
+@mixin media-desktop {
+  @media (min-width: $breakpoint-desktop) {
+    @content;
+  }
+}
+
+@mixin media-wide {
+  @media (min-width: $breakpoint-wide) {
+    @content;
+  }
+}
+
+// Responsive Text Mixin
+@mixin responsive-text($desktop-size, $mobile-size) {
+  font-size: $desktop-size;
+
+  @include media-tablet {
+    font-size: $mobile-size;
+  }
+}
+
+// Flexbox Mixins
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin flex-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+@mixin flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+// Hover Scale Effect
+@mixin hover-scale($scale: 1.05) {
+  transition: transform $transition-base;
+
+  &:hover {
+    transform: scale($scale);
+  }
+}
+
+// Hover Lift Effect
+@mixin hover-lift($distance: 8px) {
+  transition: transform $transition-base, box-shadow $transition-base;
+
+  &:hover {
+    transform: translateY(-#{$distance});
+    box-shadow: $shadow-lg;
+  }
+}
+
+// Text Truncate
+@mixin text-truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+// Absolute Centered
+@mixin absolute-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+// ===== GLOBAL RESET & BASE STYLES =====
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: $font-family-primary;
+  font-size: $font-size-base;
+  line-height: $line-height-normal;
+  color: $color-brand-navy;
+  background-color: $color-white;
+  overflow-x: hidden;
+
+  @media (max-width: $breakpoint-tablet) {
+    font-size: $font-size-sm;
+  }
+}
+
+// ===== TYPOGRAPHY =====
+h1, h2, h3, h4, h5, h6 {
+  font-family: $font-family-heading;
+  font-weight: $font-weight-bold;
+  line-height: $line-height-tight;
+  margin-bottom: $spacing-md;
+}
+
+h1 {
+  font-size: $font-size-5xl;
+  letter-spacing: $letter-spacing-tight;
+
+  @media (max-width: $breakpoint-tablet) {
+    font-size: $font-size-4xl;
+  }
+}
+
+h2 {
+  font-size: $font-size-4xl;
+
+  @media (max-width: $breakpoint-tablet) {
+    font-size: $font-size-3xl;
+  }
+}
+
+h3 {
+  font-size: $font-size-3xl;
+
+  @media (max-width: $breakpoint-tablet) {
+    font-size: $font-size-2xl;
+  }
+}
+
+h4 {
+  font-size: $font-size-2xl;
+}
+
+h5 {
+  font-size: $font-size-xl;
+}
+
+h6 {
+  font-size: $font-size-lg;
+}
+
+p {
+  margin-bottom: $spacing-md;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+a {
+  color: $color-primary;
+  text-decoration: none;
+  transition: $transition-color;
+
+  &:hover {
+    color: $color-primary-dark;
+  }
+}
+
+// ===== BUTTONS =====
+button, .btn {
+  font-family: $font-family-primary;
+  font-weight: $button-font-weight;
+  border: none;
+  cursor: $button-cursor;
+  transition: $transition-all;
+  border-radius: $button-border-radius;
+  padding: $button-padding;
+  font-size: $button-font-size;
+
+  &:hover {
+    transform: $transform-translate-up-sm;
+    box-shadow: $shadow-lg;
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}
+
+// Pill button matching original (.btn-premium--primary): #0d3570 bg, pill, white text
+.btn-primary {
+  background: #0d3570;
+  color: #fff;
+  border: 1px solid #082848;
+  border-radius: 999px;
+  padding: 18px 40px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  box-shadow: 0 14px 40px rgba(13, 53, 112, 0.35);
+
+  &:hover {
+    background: #0a2a5c;
+    transform: translateY(-2px);
+    box-shadow: 0 18px 46px rgba(13, 53, 112, 0.42);
+  }
+}
+
+.btn-secondary {
+  background-color: $button-secondary-bg;
+  color: $button-secondary-color;
+  border: $button-secondary-border;
+
+  &:hover {
+    background-color: $button-secondary-bg-hover;
+    color: $button-secondary-color-hover;
+  }
+}
+
+.btn-whatsapp {
+  background-color: $button-whatsapp-bg;
+  color: $button-whatsapp-color;
+
+  &:hover {
+    background-color: $button-whatsapp-bg-hover;
+  }
+}
+
+.btn-small {
+  padding: $button-padding-sm;
+  font-size: $font-size-sm;
+}
+
+.btn-large {
+  padding: $button-padding-lg;
+  font-size: $font-size-lg;
+  width: 100%;
+
+  @media (min-width: $breakpoint-tablet) {
+    width: auto;
+  }
+}
+
+// ===== SECTIONS =====
+section {
+  padding: $section-padding;
+
+  @media (max-width: $breakpoint-tablet) {
+    padding: $section-padding-mobile;
+  }
+
+  &.hero {
+    min-height: $hero-min-height;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  &.dark {
+    background-color: $color-dark-bg;
+    color: $color-white;
+  }
+
+  &.light {
+    background-color: $color-white;
+    color: $color-dark-bg;
+  }
+}
+
+// ===== CONTAINERS & LAYOUT =====
+.container {
+  max-width: $container-max-width;
+  margin: 0 auto;
+  padding: $container-padding;
+
+  @media (max-width: $breakpoint-tablet) {
+    padding: $container-padding-mobile;
+  }
+}
+
+.grid {
+  display: grid;
+  gap: $grid-gap;
+
+  @media (max-width: $breakpoint-tablet) {
+    gap: $grid-gap-mobile;
+  }
+}
+
+.grid-3 {
+  @extend .grid;
+  grid-template-columns: repeat($grid-3-cols, 1fr);
+
+  @media (max-width: $breakpoint-wide) {
+    grid-template-columns: repeat($grid-3-cols-tablet, 1fr);
+  }
+
+  @media (max-width: $breakpoint-tablet) {
+    grid-template-columns: $grid-3-cols-mobile;
+  }
+}
+
+.flex {
+  display: flex;
+  gap: $spacing-md;
+}
+
+.flex-center {
+  @extend .flex;
+  @include flex-center;
+}
+
+.flex-between {
+  @extend .flex;
+  @include flex-between;
+}
+
+.flex-column {
+  @extend .flex;
+  @include flex-column;
+}
+
+// ===== IMAGES =====
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+.img-full {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.img-contain {
+  object-fit: contain;
+}
+
+// ===== UTILITIES =====
+.text-center {
+  text-align: center;
+}
+
+.text-gold,
+.text-primary {
+  color: $color-primary;
+}
+
+.text-gray {
+  color: $color-gray;
+}
+
+.text-light {
+  color: $color-light-gray;
+}
+
+.text-small {
+  font-size: $font-size-sm;
+}
+
+.text-large {
+  font-size: $font-size-lg;
+}
+
+.mt-sm { margin-top: $spacing-sm; }
+.mt-md { margin-top: $spacing-md; }
+.mt-lg { margin-top: $spacing-lg; }
+.mt-xl { margin-top: $spacing-xl; }
+.mt-2xl { margin-top: $spacing-2xl; }
+
+.mb-sm { margin-bottom: $spacing-sm; }
+.mb-md { margin-bottom: $spacing-md; }
+.mb-lg { margin-bottom: $spacing-lg; }
+.mb-xl { margin-bottom: $spacing-xl; }
+.mb-2xl { margin-bottom: $spacing-2xl; }
+
+.pt-sm { padding-top: $spacing-sm; }
+.pt-md { padding-top: $spacing-md; }
+.pt-lg { padding-top: $spacing-lg; }
+
+.pb-sm { padding-bottom: $spacing-sm; }
+.pb-md { padding-bottom: $spacing-md; }
+.pb-lg { padding-bottom: $spacing-lg; }
+
+.opacity-50 { opacity: $opacity-50; }
+.opacity-70 { opacity: 0.7; }
+
+.hidden {
+  display: none;
+}
+
+.sr-only {
+  @include text-truncate;
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+// ===== SCROLLBAR (Webkit) =====
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: $color-dark-secondary;
+}
+
+::-webkit-scrollbar-thumb {
+  background: $color-primary;
+  border-radius: $border-radius-sm;
+
+  &:hover {
+    background: $color-primary-light;
+  }
+}
+
+// ===== PRINT STYLES =====
+@media print {
+  body {
+    background-color: $color-white;
+    color: $color-dark-bg;
+  }
+
+  a {
+    color: $color-dark-bg;
+  }
+}

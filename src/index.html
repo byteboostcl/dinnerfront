@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <title>Dinner in the Sky® México | 2026</title>
+  <base href="/">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+
+  <!-- Google Tag Manager, gtag (GA4) and Meta Pixel — stubs only.
+       Each snippet's own queueing stub (dataLayer / gtag() / fbq()) is set
+       up synchronously below, so any event fired anywhere in the app before
+       the real scripts arrive is queued and replayed once they load — no
+       tracking is lost. Only the actual network fetch of the three
+       third-party scripts is deferred (see bottom of <head>): they were
+       dominating Lighthouse's simulated LCP delay by competing for
+       connections on the critical path despite not being needed for first
+       paint. -->
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+    function gtag(){ dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-Y2S6MLPQ3D');
+  </script>
+
+  <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[]}(window);
+    // Two pixels running in parallel on purpose (separate ad accounts).
+    // fbq('track', ...) broadcasts to every pixel initialized below, so no
+    // other code has to loop over pixel IDs.
+    fbq('init', '442657751936307');
+    fbq('init', '899218392733899');
+    fbq('track', 'PageView');
+  </script>
+
+  <script>
+    function loadDeferredThirdPartyScripts() {
+      var gtm = document.createElement('script');
+      gtm.async = true;
+      gtm.src = 'https://www.googletagmanager.com/gtm.js?id=GTM-TZJGGV7X';
+      document.head.appendChild(gtm);
+
+      var gtagScript = document.createElement('script');
+      gtagScript.async = true;
+      gtagScript.src = 'https://www.googletagmanager.com/gtag/js?id=G-Y2S6MLPQ3D';
+      document.head.appendChild(gtagScript);
+
+      var fbScript = document.createElement('script');
+      fbScript.async = true;
+      fbScript.src = 'https://connect.facebook.net/en_US/fbevents.js';
+      document.head.appendChild(fbScript);
+    }
+
+    function scheduleDeferredThirdPartyScripts() {
+      if ('requestIdleCallback' in window) {
+        requestIdleCallback(loadDeferredThirdPartyScripts, { timeout: 2000 });
+      } else {
+        setTimeout(loadDeferredThirdPartyScripts, 1500);
+      }
+    }
+
+    if (document.readyState === 'complete') {
+      scheduleDeferredThirdPartyScripts();
+    } else {
+      window.addEventListener('load', scheduleDeferredThirdPartyScripts);
+    }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <!-- Anton is self-hosted (see styles.scss) and preloaded here so the hero H1 font
+       is ready by first paint instead of swapping in late — a Google Fonts CDN
+       preload was tried first but it serves a different file hash per requesting
+       User-Agent, which broke the preload match and re-introduced the FOUT jump
+       (fallback font shows big/bold, then jumps to Anton) this is meant to prevent. -->
+  <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/anton-v27-latin-400.woff2" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TZJGGV7X"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+
+  <!-- Meta Pixel (noscript) -->
+  <noscript><img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=442657751936307&ev=PageView&noscript=1"/></noscript>
+  <noscript><img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=899218392733899&ev=PageView&noscript=1"/></noscript>
+  <!-- End Meta Pixel (noscript) -->
+
+  <app-root></app-root>
+</body>
+</html>

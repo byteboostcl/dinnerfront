@@ -1,0 +1,108 @@
+:host {
+  display: block;
+  width: 100%;
+  font-family: 'Inter', system-ui, sans-serif;
+}
+
+/* ===== Exact values from hero-replication-package/IMPLEMENTATION-NOTES.md ===== */
+
+.dits-hero { position: relative; height: 660px; overflow: hidden; color: #fff; }
+
+/* Beyond the 1440px the kit actually validated, a flat 660px reads as a thin
+   banner on wide/ultra-wide monitors. Scales height keeping the 1440:660
+   ratio (45.833vw) above that point only — ≤1440px stays the exact 660px
+   from the kit, untouched. */
+@media (min-width: 1441px) {
+  .dits-hero { height: clamp(660px, 45.833vw, 900px); }
+}
+/* .bg is a single <picture>-fed image: the browser picks exactly one of the
+   mobile/desktop/wide sources (see the template) and only that one is ever
+   downloaded, so this one rule covers all breakpoints — no per-breakpoint
+   display:none/block toggling needed anymore. */
+.dits-hero .bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 20%; }
+.dits-hero .visual { display: none; }
+.dits-hero .overlay {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(90deg, rgba(7, 18, 36, .88) 0%, rgba(7, 18, 36, .68) 22%, rgba(7, 18, 36, .38) 40%, rgba(7, 18, 36, .1) 58%, rgba(7, 18, 36, 0) 68%),
+    linear-gradient(0deg, rgba(0, 0, 0, .5) 0%, transparent 26%);
+}
+.dits-hero .content { position: relative; z-index: 1; height: 100%; display: flex; flex-direction: column; justify-content: center; padding-left: 72px; width: 560px; }
+.dits-hero .content .logo-white { height: 46px; width: auto; align-self: flex-start; }
+.dits-hero .content .gold-rule { margin-top: 16px; width: 34px; height: 1.5px; background: #c9a24b; }
+.dits-hero .content .country { margin-top: 12px; font-family: 'Bebas Neue', sans-serif; font-size: 52px; line-height: 1; color: #c9a24b; letter-spacing: .08em; }
+.dits-hero .content .separator { margin-top: 14px; display: flex; align-items: center; gap: 10px; }
+.dits-hero .content .separator .line { flex: 1; max-width: 72px; height: 1px; background: rgba(244, 237, 224, .5); }
+.dits-hero .content .separator .dot { width: 5px; height: 5px; border-radius: 50%; background: #fff; }
+.dits-hero .content .tagline { margin-top: 14px; font-size: 14px; font-weight: 600; letter-spacing: .1em; color: #f4ede0; }
+.dits-hero .content .tagline br { display: none; }
+.dits-hero .content h1 { margin: 26px 0 0; font-size: 24px; font-weight: 800; line-height: 1.32; text-transform: uppercase; text-shadow: 0 2px 10px rgba(0, 0, 0, .25); color: #fff; }
+.dits-hero .content p { margin: 16px 0 0; font-size: 14.5px; line-height: 1.55; max-width: 440px; text-shadow: 0 2px 10px rgba(0, 0, 0, .25); }
+.dits-hero .content .actions { margin-top: 24px; display: flex; gap: 12px; }
+.dits-hero .content .actions .btn { padding: 16px 28px; font-size: 12px; font-weight: 800; letter-spacing: .06em; white-space: nowrap; border-radius: 8px; text-decoration: none; }
+.dits-hero .content .actions .btn-primary { background: #c9a24b; color: #171310; }
+.dits-hero .content .actions .btn-outline { border: 1.5px solid #c9a24b; color: #c9a24b; padding: 14.5px 26.5px; background: transparent; }
+
+@media (max-width: 768px) {
+  .dits-hero {
+    height: auto;
+    min-height: 812px;
+    overflow: visible;
+  }
+  .dits-hero .visual { display: block; position: absolute; inset: 0; overflow: hidden; z-index: 0; }
+  .dits-hero .visual .rig {
+    position: absolute;
+    /* Fixed px alone drifts across widths: the image scales with vw but a
+       flat top offset doesn't, so the ring lands progressively lower on
+       wider phones. This compensates for the image's own scaling so the
+       ring always sits at the same point relative to the text above it,
+       from 320px to 768px. */
+    top: calc(184px - 8.98vw);
+    left: 0;
+    width: 100%;
+    height: auto;
+    /* .rig is a separate photo layered over .bg's own sky — as the top
+       offset moved up, its hard top edge started crossing into visible
+       area, showing as a seam where the two photos' sky tones don't quite
+       match. Fade its own top edge into transparency so it blends into
+       .bg's sky underneath instead of cutting off abruptly. */
+    -webkit-mask-image: linear-gradient(to bottom, transparent 0, #000 90px);
+    mask-image: linear-gradient(to bottom, transparent 0, #000 90px);
+  }
+  .dits-hero .visual .overlay {
+    background:
+      linear-gradient(180deg, rgba(7, 18, 36, .55) 0%, rgba(7, 18, 36, .22) 22%, transparent 38%),
+      linear-gradient(0deg, rgba(3, 6, 12, .95) 0%, rgba(3, 6, 12, .7) 22%, transparent 44%);
+  }
+  .dits-hero > .overlay { background: none; }
+
+  .dits-hero .content {
+    position: relative;
+    z-index: 3;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    min-height: 812px;
+    box-sizing: border-box;
+    padding: 32px 22px calc(24px + env(safe-area-inset-bottom)) 24px;
+    width: auto;
+    height: auto;
+  }
+  .dits-hero .content .logo-white { height: 38px; align-self: center; }
+  .dits-hero .content .gold-rule { width: 28px; margin-top: 14px; }
+  .dits-hero .content .country { margin-top: 10px; font-size: 36px; }
+  .dits-hero .content .separator { margin-top: 12px; width: 132px; gap: 8px; }
+  .dits-hero .content .separator .line { max-width: 56px; }
+  .dits-hero .content .separator .dot { width: 4px; height: 4px; }
+  .dits-hero .content .tagline { margin-top: 12px; font-size: 15px; line-height: 1.4; letter-spacing: .08em; }
+  .dits-hero .content .tagline br { display: block; }
+  .dits-hero .content .commercial { margin-top: auto; text-align: left; width: 100%; padding-top: 40px; }
+  .dits-hero .content h1 { margin-top: 0; font-size: 19px; line-height: 1.3; text-shadow: 0 2px 10px rgba(0, 0, 0, .3); }
+  .dits-hero .content .gold-rule-2 { margin: 14px 0; width: 40px; height: 2px; background: #c9a24b; }
+  .dits-hero .content p { margin-top: 0; font-size: 13px; line-height: 1.5; max-width: none; text-shadow: 0 2px 10px rgba(0, 0, 0, .3); }
+  .dits-hero .content p.p2 { margin-top: 9px; }
+  .dits-hero .content .actions { margin-top: 18px; display: grid; grid-template-columns: 1fr 1fr; gap: 10px; width: 100%; }
+  .dits-hero .content .actions .btn { width: 100%; min-width: 0; min-height: 58px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; text-align: center; padding: 12px 10px; font-size: 11px; line-height: 1.15; white-space: normal; }
+}

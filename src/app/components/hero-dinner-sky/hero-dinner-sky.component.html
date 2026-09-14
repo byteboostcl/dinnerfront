@@ -1,0 +1,33 @@
+<section class="dits-hero">
+  <picture>
+    <source media="(min-width: 1441px)" srcset="assets/images/hero-mexico/desktop/mx-hero-desktop-wide.webp">
+    <source media="(min-width: 769px)" srcset="assets/images/hero-mexico/desktop/mx-hero-desktop-new.webp">
+    <img class="bg" src="assets/images/hero-mexico/mobile/mx-hero-mobile-sky-only.webp" alt="Plataforma de Dinner in the Sky suspendida en el cielo" fetchpriority="high" width="890" height="1920">
+  </picture>
+  <div class="visual">
+    <picture>
+      <source media="(min-width: 769px)" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNk+A8AAQUBAScY42YAAAAASUVORK5CYII=">
+      <img class="rig" src="assets/images/hero-mexico/mobile/mx-hero-mobile-chain.webp" srcset="assets/images/hero-mexico/mobile/mx-hero-mobile-chain-760.webp 760w, assets/images/hero-mexico/mobile/mx-hero-mobile-chain.webp 1080w" sizes="100vw" alt="Plataforma de Dinner in the Sky suspendida en el cielo" width="1080" height="1480">
+    </picture>
+    <div class="overlay"></div>
+  </div>
+  <div class="overlay"></div>
+
+  <div class="content">
+    <img class="logo-white" src="assets/logos/logo-dits-white.webp" alt="Dinner in the Sky" width="254" height="92">
+    <div class="gold-rule"></div>
+    <div class="country">MÉXICO</div>
+    <div class="separator"><div class="line"></div><div class="dot"></div><div class="line"></div></div>
+    <div class="tagline">UNA EXPERIENCIA<br>QUE ELEVA<br>TUS SENTIDOS.</div>
+    <div class="commercial">
+      <h1>CUANDO LA GASTRONOMÍA TOCA LAS NUBES, NACE UNA EXPERIENCIA INOLVIDABLE.</h1>
+      <div class="gold-rule-2"></div>
+      <p>22 invitados por vuelo, con vistas incomparables y la máxima seguridad certificada.</p>
+      <p class="p2">Una experiencia única para celebrar, conectar y crear recuerdos que duran toda la vida.</p>
+      <div class="actions">
+        <a class="btn btn-primary" [href]="ctaLink" (click)="onCtaClick()">CONOCE LA EXPERIENCIA</a>
+        <a class="btn btn-outline" [href]="buyLink" (click)="onBuyClick()">COMPRAR BOLETOS</a>
+      </div>
+    </div>
+  </div>
+</section>
