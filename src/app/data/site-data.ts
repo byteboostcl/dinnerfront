@@ -152,7 +152,7 @@ export const CITIES: City[] = [
     slug: 'hermosillo',
     image: 'assets/images/city/hermosillo-coming-soon.png',
     cardImage: 'assets/images/city/hermosillo-card.png',
-    pageHeroImage: 'assets/images/city/hermosillo-hero.webp',
+    pageHeroImage: 'assets/images/city/hermosillo-hero-desktop.jpeg',
     dates: '12 al 29 de Noviembre 2026',
     description: 'Dinner in the Sky por primera vez en Hermosillo, Sonora',
     height: '45 metros',

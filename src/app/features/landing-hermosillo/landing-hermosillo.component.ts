@@ -170,11 +170,8 @@ export interface HermosilloTicketPackage {
       <!-- HERO -->
       <section class="tj-hero" id="top">
         <div class="tj-hero__media" aria-hidden="true">
-          <!-- Two crops of the same photo: mobile is a vertical crop framing
-               the hook/rig top-to-bottom; desktop is a panorama with the sky
-               extended left so the text column never overlaps the platform.
-               Swapped by breakpoint via CSS (.tj-hero__media-mobile /
-               .tj-hero__media-desktop), not JS. -->
+          <!-- Two responsive crops of the approved cover photo. Desktop nudges
+               the image to the right so the headline stays off the table. -->
           @if (heroImage) {
             <img
               class="tj-hero__media-mobile"
@@ -204,7 +201,10 @@ export interface HermosilloTicketPackage {
             <img [src]="ditsLogoWhite" alt="Dinner in the Sky" class="tj-hero__logo" />
             <div class="tj-hero__city">{{ heroCityLabel }}</div>
             <div class="tj-hero__divider"></div>
-            <div class="tj-hero__date-range">{{ dateRangeLabel }}</div>
+            <div class="tj-hero__date-range">
+              <span class="tj-hero__date-desktop">{{ dateRangeLabel }}</span>
+              <span class="tj-hero__date-mobile">{{ dateRangeMobileLabel }}</span>
+            </div>
             <div class="tj-hero__date-days">{{ dateDaysLabel }}</div>
           </div>
 
@@ -726,13 +726,13 @@ export interface HermosilloTicketPackage {
     }
 
     /* ===== Hero ===== */
-    /* Mobile hero is anchored top AND bottom: brand/dates pinned near the top,
-       the pitch/CTAs pinned near the bottom via margin-top: auto on
-       .tj-hero__bottom. Desktop drops that split and centers everything as
-       one block instead (see media query). */
+    /* Mobile treats the approved vertical photo as a true cover stage: the
+       brand/date live over the sky, while the pitch begins as a separate
+       editorial section below. Desktop keeps the original one-block hero. */
     .tj-hero {
       position: relative;
       min-height: 760px;
+      padding: 0;
       overflow: hidden;
       color: #ffffff;
     }
@@ -776,6 +776,7 @@ export interface HermosilloTicketPackage {
       display: block;
       height: 36px;
       width: auto;
+      filter: drop-shadow(0 2px 7px rgba(0, 0, 0, 0.62)) drop-shadow(0 0 1px rgba(0, 0, 0, 0.85));
     }
 
     .tj-hero__city {
@@ -801,6 +802,10 @@ export interface HermosilloTicketPackage {
       font-size: 14.5px;
       font-weight: 700;
       line-height: 1.2;
+    }
+
+    .tj-hero__date-mobile {
+      display: none;
     }
 
     .tj-hero__date-days {
@@ -884,6 +889,145 @@ export interface HermosilloTicketPackage {
       flex: 1;
       border: 1.5px solid #dcaf4e;
       color: #dcaf4e;
+    }
+
+    @media (max-width: 700px) {
+      .tj-hero {
+        min-height: 0;
+        background: #efedea;
+        color: #111111;
+      }
+
+      .tj-hero__media {
+        position: relative;
+        inset: auto;
+        bottom: auto;
+        height: min(780px, calc(100svh - 68px));
+        min-height: 660px;
+        overflow: hidden;
+      }
+
+      .tj-hero__media img {
+        object-position: center top !important;
+      }
+
+      .tj-hero__scrim {
+        bottom: auto;
+        height: min(780px, calc(100svh - 68px));
+        min-height: 660px;
+        background:
+          linear-gradient(90deg, rgba(2, 8, 16, 0.52) 0%, rgba(2, 8, 16, 0.34) 28%, rgba(2, 8, 16, 0.12) 52%, rgba(2, 8, 16, 0) 76%),
+          linear-gradient(180deg, rgba(2, 8, 16, 0.42) 0%, rgba(2, 8, 16, 0.18) 30%, rgba(2, 8, 16, 0.02) 58%, rgba(2, 8, 16, 0) 100%);
+      }
+
+      .tj-hero__content {
+        position: static;
+        z-index: auto;
+        height: auto;
+        min-height: 0;
+        padding: 0;
+        display: block;
+      }
+
+      .tj-hero__top {
+        position: absolute;
+        z-index: 2;
+        top: 34px;
+        left: clamp(28px, 9vw, 42px);
+        max-width: 230px;
+        color: #ffffff;
+      }
+
+      .tj-hero__logo {
+        height: 34px;
+        filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.5)) drop-shadow(0 8px 18px rgba(0, 0, 0, 0.28));
+      }
+
+      .tj-hero__city {
+        margin-top: 22px;
+        font-size: 38px;
+        line-height: 0.96;
+        letter-spacing: 0.015em;
+        text-shadow: 0 2px 3px rgba(5, 10, 18, 0.38), 0 10px 22px rgba(5, 10, 18, 0.22);
+      }
+
+      .tj-hero__divider {
+        margin-top: 12px;
+        width: 36px;
+      }
+
+      .tj-hero__date-range {
+        max-width: 142px;
+        margin-top: 13px;
+        transform: none;
+        font-size: 12.5px;
+        line-height: 1.15;
+        letter-spacing: 0.01em;
+        text-shadow: 0 2px 3px rgba(2, 8, 16, 0.72), 0 8px 18px rgba(2, 8, 16, 0.32);
+      }
+
+      .tj-hero__date-desktop {
+        display: none;
+      }
+
+      .tj-hero__date-mobile {
+        display: inline;
+      }
+
+      .tj-hero__date-days {
+        margin-top: 7px;
+        transform: none;
+        font-size: 10px;
+        letter-spacing: 0.1em;
+        text-shadow: 0 2px 3px rgba(2, 8, 16, 0.72), 0 8px 18px rgba(2, 8, 16, 0.32);
+      }
+
+      .tj-hero__bottom {
+        position: relative;
+        z-index: 3;
+        margin: -156px 0 0;
+        padding: 44px clamp(28px, 9vw, 40px) 42px;
+        color: #111111;
+        background: #efedea;
+        text-shadow: none;
+      }
+
+      .tj-hero__headline {
+        max-width: 340px;
+        font-size: 20px;
+        line-height: 1.16;
+        color: #111111;
+      }
+
+      .tj-hero__divider--sm {
+        margin: 14px 0 16px;
+      }
+
+      .tj-hero__body {
+        max-width: 340px;
+        font-size: 14px;
+        line-height: 1.48;
+        color: #292520;
+      }
+
+      .tj-hero__body span + span {
+        margin-top: 8px;
+      }
+
+      .tj-hero__actions {
+        margin-top: 18px;
+        gap: 8px;
+      }
+
+      .tj-hero__cta {
+        min-height: 44px;
+        padding: 13px 8px;
+        font-size: 10px;
+      }
+
+      .tj-hero__cta--outline {
+        color: #7a5a1e;
+      }
     }
 
     /* ===== Discover cards ===== */
@@ -1720,7 +1864,7 @@ export interface HermosilloTicketPackage {
       }
 
       .tj-hero__content {
-        min-height: 0;
+        min-height: 660px;
         width: 560px;
         padding: 0 0 0 72px;
         justify-content: center;
@@ -2129,19 +2273,17 @@ export class LandingHermosilloComponent implements OnInit {
   currentYear = new Date().getFullYear();
   whatsappUrl = '';
 
-  @Input() ditsLogo = 'assets/images/logo-dits.webp';
+  @Input() ditsLogo = 'assets/logos/logo-dits.webp';
   @Input() ditsLogoWhite = 'assets/logos/logo-dits-white.webp';
 
-  // Un solo archivo real (foto bandera+góndola aprobada para Hermosillo) se usa
-  // para ambos cortes — a diferencia de Tijuana, que tenía dos fotos ya
-  // recortadas para mobile/desktop. Las posiciones abajo se verificaron
-  // simulando el cover-crop real de cada caja (mobile alto/angosto, desktop
-  // ancho/bajo) contra esta foto específica.
-  @Input() heroImage = 'assets/images/city/hermosillo-hero.webp';
+  // Portadas aprobadas para Hermosillo: una horizontal para web y una vertical
+  // para mobile, evitando que el texto dependa de un recorte automático.
+  @Input() heroImage = 'assets/images/city/hermosillo-hero-mobile.jpeg';
   @Input() heroImagePosition = 'center center';
-  @Input() heroImageDesktop = 'assets/images/city/hermosillo-hero.webp';
-  @Input() heroImagePositionDesktop = 'center 20%';
+  @Input() heroImageDesktop = 'assets/images/city/hermosillo-hero-desktop.jpeg';
+  @Input() heroImagePositionDesktop = 'center center';
   @Input() dateRangeLabel = '12 AL 29 DE NOVIEMBRE 2026';
+  @Input() dateRangeMobileLabel = '12-29 nov 2026';
   // Sin patrón de días confirmado todavía (a diferencia de Tijuana, que sí
   // tenía "jueves a domingo" confirmado) — se deja un dato honesto en vez de
   // inventar días.
