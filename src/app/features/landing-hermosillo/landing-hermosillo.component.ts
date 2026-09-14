@@ -261,7 +261,7 @@ export interface HermosilloTicketPackage {
               <div class="tj-card__title">{{ card.title }}</div>
               <div class="tj-card__desc">{{ card.description }}</div>
               @if (card.image) {
-                <div class="tj-card__feature-media-wrap">
+                <div class="tj-card__feature-media-wrap" [class.tj-card__feature-media-wrap--wide]="!logoOriginal">
                   <div class="tj-card__feature-label">{{ card.featureLabel || 'Chef' }}</div>
                   <img class="tj-card__feature-media" [src]="card.image" [alt]="card.imageAlt" loading="lazy" decoding="async" />
                 </div>
@@ -2060,6 +2060,21 @@ export interface HermosilloTicketPackage {
       .tj-card__feature-media-wrap {
         grid-area: chef;
         margin-top: 0;
+      }
+
+      /* When there's no restaurant-credit logo to show in the "credit"
+         column (e.g. no chef/restaurante confirmado yet), the media widens
+         to fill that now-empty column too instead of sitting narrow with a
+         blank gap beside it — used for wide "coming soon" graphics in
+         place of a (narrower, portrait) chef headshot. */
+      .tj-card__feature-media-wrap--wide {
+        grid-column: chef-start / credit-end;
+      }
+
+      .tj-card__feature-media-wrap--wide .tj-card__feature-media {
+        max-height: none;
+        aspect-ratio: 16 / 9;
+        object-fit: cover;
       }
 
       .tj-card__feature-label {
