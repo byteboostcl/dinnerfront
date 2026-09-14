@@ -42,6 +42,12 @@ export interface HermosilloDiscoverCard {
    *  shown below the description instead (e.g. a chef portrait you don't want
    *  cover-cropped). */
   mediaPosition?: 'top' | 'bottom';
+  /** Overline label shown above the image in the 'bottom' feature layout
+   *  (e.g. "Chef" for an actual chef portrait). Defaults to 'Chef' in the
+   *  template when omitted — set this explicitly when `image` is NOT a
+   *  chef photo (e.g. a generic "coming soon" graphic) so the label isn't
+   *  misleading. */
+  featureLabel?: string;
 }
 
 export interface HermosilloStat {
@@ -256,7 +262,7 @@ export interface HermosilloTicketPackage {
               <div class="tj-card__desc">{{ card.description }}</div>
               @if (card.image) {
                 <div class="tj-card__feature-media-wrap">
-                  <div class="tj-card__feature-label">Chef</div>
+                  <div class="tj-card__feature-label">{{ card.featureLabel || 'Chef' }}</div>
                   <img class="tj-card__feature-media" [src]="card.image" [alt]="card.imageAlt" loading="lazy" decoding="async" />
                 </div>
               }
@@ -2330,18 +2336,21 @@ export class LandingHermosilloComponent implements OnInit {
    * beside it.
    */
   // A diferencia de Tijuana (restaurante/chef confirmado: Cordero Negro), para
-  // Hermosillo todavía no hay chef/restaurante invitado confirmado — la card
-  // de menú se deja sin foto ni crédito (placeholders honestos) en vez de
-  // inventar un chef o restaurante.
+  // Hermosillo todavía no hay chef/restaurante invitado confirmado. La card
+  // de menú usa el gráfico oficial de "próximamente" del cliente (no una
+  // foto de chef, por eso featureLabel: 'Próximamente' en vez del 'Chef'
+  // por defecto) — logoOriginal/chefPhoto siguen vacíos, sin inventar un
+  // chef o restaurante.
   @Input() discoverCards: HermosilloDiscoverCard[] = [
     {
       id: 'menu',
       eyebrow: 'DESCUBRE',
       title: 'Menú',
       description: 'El restaurante invitado y el menú de tres tiempos para Hermosillo se anunciarán próximamente.',
-      image: '',
-      imageAlt: 'Menú — próximamente',
+      image: 'assets/images/city/hermosillo-menu-proximamente.webp',
+      imageAlt: 'Estamos preparando el menú con un restaurante local de Hermosillo. Próximamente, todos los detalles.',
       mediaPosition: 'bottom',
+      featureLabel: 'Próximamente',
       anchor: '#menu'
     },
     {
