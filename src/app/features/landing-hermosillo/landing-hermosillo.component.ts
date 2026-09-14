@@ -2347,8 +2347,8 @@ export class LandingHermosilloComponent implements OnInit {
       eyebrow: 'DESCUBRE',
       title: 'Reserva tu lugar',
       description: 'Cupo limitado a 22 invitados por vuelo. Boletos disponibles muy pronto.',
-      image: '',
-      imageAlt: 'Reserva tu lugar',
+      image: 'assets/images/city/hermosillo-reserva-tarjeta.webp',
+      imageAlt: 'Pareja brindando con copas de vino tinto durante el vuelo de Dinner in the Sky, atardecer sobre Hermosillo',
       anchor: '#comprar'
     },
     {
