@@ -2436,27 +2436,61 @@ export class LandingHermosilloComponent implements OnInit {
 
   @Input() convBarNote = 'Cupo limitado. Asegura tu lugar y vive Hermosillo desde el cielo.';
 
-  @Input() ticketsIntro = 'Los paquetes y boletos para Hermosillo estarán disponibles muy pronto.';
+  @Input() ticketsIntro = 'Elige tu paquete y reserva tu lugar en el cielo.';
 
   /**
-   * The 3 Turitop products for this venue, per the codes in Turitop's own
-   * "Lista de servicios" (P1/P2/P3). Each renders as a dropdown in the
-   * #comprar section; opening it lazy-mounts that product's Turitop widget.
+   * The 3 Turitop products for this venue, per los códigos reales
+   * confirmados por el cliente en Turitop's "Lista de servicios" (P153/P155/
+   * P156, cuenta D119 — misma cuenta que Ensenada/Puebla/CDMX, confirmado
+   * con el cliente). Each renders as a dropdown in the #comprar section;
+   * opening it lazy-mounts that product's Turitop widget.
    *
-   * IMPORTANTE: Hermosillo todavía NO tiene cuenta/código de Turitop
-   * confirmado. Se deja vacío a propósito — NUNCA reutilizar el código de
-   * Tijuana (T1711/P1/P2/P3) aquí, porque enrutaría las compras de Hermosillo
-   * a la cuenta de Turitop de Tijuana. El template ya maneja el array vacío
-   * mostrando un mensaje "próximamente" en vez de un dropdown roto (ver
-   * sección #comprar). Cuando el equipo confirme el company code y los
-   * servicios P#, se agregan aquí sin tocar el resto del componente.
+   * Precio: $3,500 MXN confirmado para los 3 paquetes, cada uno con opción
+   * de menú regular o vegetariano a elegir al reservar (dentro del propio
+   * widget de Turitop). Duración y contenido exacto del menú aún no
+   * confirmados — no se inventan aquí.
    */
-  @Input() ticketPackages: HermosilloTicketPackage[] = [];
+  @Input() ticketPackages: HermosilloTicketPackage[] = [
+    {
+      id: 'comida-atardecer',
+      title: 'Comida al atardecer',
+      price: '$3,500 MXN',
+      description: [
+        { text: 'Un vuelo con vista al atardecer sobre Hermosillo, a 45 metros de altura, con ' },
+        { text: 'menú regular o vegetariano', highlight: true },
+        { text: ' a elegir al reservar.' }
+      ],
+      service: 'P153'
+    },
+    {
+      id: 'comida-alturas',
+      title: 'Comida en las alturas',
+      price: '$3,500 MXN',
+      description: [
+        { text: 'Una comida a 45 metros de altura sobre Hermosillo, con ' },
+        { text: 'menú regular o vegetariano', highlight: true },
+        { text: ' a elegir al reservar.' }
+      ],
+      service: 'P155'
+    },
+    {
+      id: 'cena-alturas',
+      title: 'Cena en las alturas',
+      price: '$3,500 MXN',
+      description: [
+        { text: 'Una cena a 45 metros de altura sobre Hermosillo, con ' },
+        { text: 'menú regular o vegetariano', highlight: true },
+        { text: ' a elegir al reservar.' }
+      ],
+      service: 'P156'
+    }
+  ];
 
-  /** Turitop account/company code shared by every widget on this page. Vacío
-   *  hasta que Hermosillo tenga su propia cuenta confirmada — ver nota en
-   *  ticketPackages arriba. */
-  @Input() turitopCompany = '';
+  /** Turitop account/company code shared by every widget on this page.
+   *  D119 — misma cuenta que Ensenada/Puebla/CDMX, confirmado con el
+   *  cliente (los códigos P153/155/156 siguen su misma numeración
+   *  secuencial: P150 Ensenada, P151 Puebla, P152 CDMX). */
+  @Input() turitopCompany = 'D119';
   @Input() turitopLang = 'es';
   @Input() turitopButtonColor = 'green';
   @Input() turitopAffTag = 'ttafid';
