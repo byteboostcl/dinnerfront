@@ -2282,12 +2282,14 @@ export class LandingHermosilloComponent implements OnInit {
   @Input() ditsLogo = 'assets/logos/logo-dits.webp';
   @Input() ditsLogoWhite = 'assets/logos/logo-dits-white.webp';
 
-  // Portadas aprobadas para Hermosillo: una horizontal para web y una vertical
-  // para mobile, evitando que el texto dependa de un recorte automático.
-  @Input() heroImage = 'assets/images/city/hermosillo-hero-mobile.jpeg';
+  // Portadas del hero principal: foto real del brindis (3 invitadas, vista
+  // del atardecer sobre Hermosillo) — una vertical para mobile y una
+  // horizontal para web, evitando que el texto dependa de un recorte
+  // automático.
+  @Input() heroImage = 'assets/images/city/hermosillo-hero-brindis-mobile.webp';
   @Input() heroImagePosition = 'center center';
-  @Input() heroImageDesktop = 'assets/images/city/hermosillo-hero-desktop.jpeg';
-  @Input() heroImagePositionDesktop = 'center center';
+  @Input() heroImageDesktop = 'assets/images/city/hermosillo-hero-brindis-desktop.webp';
+  @Input() heroImagePositionDesktop = 'center 42%';
   @Input() dateRangeLabel = '12 AL 29 DE NOVIEMBRE 2026';
   @Input() dateRangeMobileLabel = '12-29 nov 2026';
   // Sin patrón de días confirmado todavía (a diferencia de Tijuana, que sí
