@@ -125,21 +125,21 @@ export interface HermosilloTicketPackage {
     <div class="tj">
       <!-- HEADER -->
       <header class="tj-header">
-        <a href="#top" class="tj-header__brand">
+        <a href="#top" class="tj-header__brand" (click)="scrollToAnchor('#top', $event)">
           <img [src]="ditsLogo" alt="Dinner in the Sky" class="tj-header__logo" />
           <span class="tj-header__city">{{ heroCityLabel }}</span>
         </a>
 
         <nav class="tj-header__nav" aria-label="Secciones">
-          <a href="#experiencia">La experiencia</a>
-          <a href="#menu">Menú</a>
-          <a href="#comprar">Paquetes y horarios</a>
-          <a href="#ubicacion">Ubicación</a>
-          <a href="#faq">FAQ</a>
+          <a href="#experiencia" (click)="scrollToAnchor('#experiencia', $event)">La experiencia</a>
+          <a href="#menu" (click)="scrollToAnchor('#menu', $event)">Menú</a>
+          <a href="#comprar" (click)="scrollToAnchor('#comprar', $event)">Paquetes y horarios</a>
+          <a href="#ubicacion" (click)="scrollToAnchor('#ubicacion', $event)">Ubicación</a>
+          <a href="#faq" (click)="scrollToAnchor('#faq', $event)">FAQ</a>
         </nav>
 
         <div class="tj-header__actions">
-          <a class="tj-btn tj-btn--gold tj-btn--sm" href="#comprar">Comprar boletos</a>
+          <a class="tj-btn tj-btn--gold tj-btn--sm" href="#comprar" (click)="scrollToAnchor('#comprar', $event)">Comprar boletos</a>
           <button
             class="tj-burger"
             type="button"
@@ -156,13 +156,13 @@ export interface HermosilloTicketPackage {
       <!-- MOBILE DRAWER -->
       @if (menuOpen) {
         <div class="tj-drawer" id="tj-drawer">
-          <a href="#experiencia" (click)="closeMenu()">La experiencia</a>
-          <a href="#menu" (click)="closeMenu()">Menú</a>
-          <a href="#comprar" (click)="closeMenu()">Paquetes y horarios</a>
-          <a href="#mundo" (click)="closeMenu()">Mundo</a>
-          <a href="#ubicacion" (click)="closeMenu()">Ubicación</a>
-          <a href="#faq" (click)="closeMenu()">FAQ</a>
-          <a class="tj-btn tj-btn--gold" href="#comprar" (click)="closeMenu()">Comprar boletos</a>
+          <a href="#experiencia" (click)="scrollToAnchor('#experiencia', $event); closeMenu()">La experiencia</a>
+          <a href="#menu" (click)="scrollToAnchor('#menu', $event); closeMenu()">Menú</a>
+          <a href="#comprar" (click)="scrollToAnchor('#comprar', $event); closeMenu()">Paquetes y horarios</a>
+          <a href="#mundo" (click)="scrollToAnchor('#mundo', $event); closeMenu()">Mundo</a>
+          <a href="#ubicacion" (click)="scrollToAnchor('#ubicacion', $event); closeMenu()">Ubicación</a>
+          <a href="#faq" (click)="scrollToAnchor('#faq', $event); closeMenu()">FAQ</a>
+          <a class="tj-btn tj-btn--gold" href="#comprar" (click)="scrollToAnchor('#comprar', $event); closeMenu()">Comprar boletos</a>
         </div>
         <button class="tj-drawer-backdrop" type="button" (click)="closeMenu()" aria-label="Cerrar menú"></button>
       }
@@ -228,8 +228,8 @@ export interface HermosilloTicketPackage {
             </p>
 
             <div class="tj-hero__actions">
-              <a class="tj-hero__cta tj-hero__cta--solid" [href]="heroPrimaryCtaAnchor">{{ heroPrimaryCtaLabel }}</a>
-              <a class="tj-hero__cta tj-hero__cta--outline" [href]="heroSecondaryCtaAnchor">{{ heroSecondaryCtaLabel }}</a>
+              <a class="tj-hero__cta tj-hero__cta--solid" [href]="heroPrimaryCtaAnchor" (click)="scrollToAnchor(heroPrimaryCtaAnchor, $event)">{{ heroPrimaryCtaLabel }}</a>
+              <a class="tj-hero__cta tj-hero__cta--outline" [href]="heroSecondaryCtaAnchor" (click)="scrollToAnchor(heroSecondaryCtaAnchor, $event)">{{ heroSecondaryCtaLabel }}</a>
             </div>
           </div>
         </div>
@@ -268,7 +268,7 @@ export interface HermosilloTicketPackage {
                   </div>
                 </div>
               }
-              <a class="tj-card__arrow" [href]="card.anchor" [attr.aria-label]="card.title">
+              <a class="tj-card__arrow" [href]="card.anchor" [attr.aria-label]="card.title" (click)="scrollToAnchor(card.anchor, $event)">
                 <span class="tj-card__arrow-icon">
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
                     <path d="M5 12h14M13 6l6 6-6 6"></path>
@@ -311,7 +311,7 @@ export interface HermosilloTicketPackage {
                   <div class="tj-card__title">{{ card.title }}</div>
                   <div class="tj-card__desc">{{ card.description }}</div>
                 </div>
-                <a class="tj-card__arrow" [href]="card.anchor" [attr.aria-label]="card.title">
+                <a class="tj-card__arrow" [href]="card.anchor" [attr.aria-label]="card.title" (click)="scrollToAnchor(card.anchor, $event)">
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
                     <path d="M5 12h14M13 6l6 6-6 6"></path>
                   </svg>
@@ -534,7 +534,7 @@ export interface HermosilloTicketPackage {
         </div>
         <div class="tj-convbar__divider" aria-hidden="true"></div>
         <p class="tj-convbar__note">{{ convBarNote }}</p>
-        <a class="tj-btn tj-btn--gold tj-btn--lg" href="#comprar">
+        <a class="tj-btn tj-btn--gold tj-btn--lg" href="#comprar" (click)="scrollToAnchor('#comprar', $event)">
           Comprar boletos
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8">
             <path d="M4 8a2 2 0 0 0 0 8v3h16v-3a2 2 0 0 1 0-8V5H4zM13 5v14" stroke-dasharray="2 2"></path>
@@ -550,12 +550,12 @@ export interface HermosilloTicketPackage {
         </div>
 
         <nav class="tj-footer__nav" aria-label="Enlaces del pie de página">
-          <a href="#comprar">Horarios</a>
-          <a href="#comprar">Paquetes y precios</a>
-          <a href="#menu">Menú</a>
-          <a href="#faq">FAQ</a>
-          <a href="#faq">Políticas</a>
-          <a href="#ubicacion">Ubicación</a>
+          <a href="#comprar" (click)="scrollToAnchor('#comprar', $event)">Horarios</a>
+          <a href="#comprar" (click)="scrollToAnchor('#comprar', $event)">Paquetes y precios</a>
+          <a href="#menu" (click)="scrollToAnchor('#menu', $event)">Menú</a>
+          <a href="#faq" (click)="scrollToAnchor('#faq', $event)">FAQ</a>
+          <a href="#faq" (click)="scrollToAnchor('#faq', $event)">Políticas</a>
+          <a href="#ubicacion" (click)="scrollToAnchor('#ubicacion', $event)">Ubicación</a>
           @if (whatsappUrl) {
             <a [href]="whatsappUrl" target="_blank" rel="noopener noreferrer">Contacto</a>
           }
@@ -2544,6 +2544,49 @@ export class LandingHermosilloComponent implements OnInit {
 
   closeMenu(): void {
     this.menuOpen = false;
+  }
+
+  /**
+   * Handles every internal same-page anchor on this page (header nav,
+   * mobile drawer, hero CTAs, discover cards, conversion bar, footer).
+   *
+   * BUG FIX: plain `href="#id"` native browser fragment-scrolling does NOT
+   * work reliably on this page — confirmed live on the deployed site
+   * (dinnerfront.vercel.app/hermosillo): neither clicking a `href="#id"`
+   * link, nor setting `location.hash` at runtime, nor loading the URL with
+   * the fragment already in it actually scrolls to the target section (it
+   * silently stays at/near the top). A manual `element.scrollIntoView()`
+   * call, however, works perfectly — so every internal link now calls this
+   * instead of relying on native fragment navigation. Root cause is most
+   * likely this app's SSR + client hydration (`provideClientHydration()`
+   * in app.config.ts): hydration replaces/reconciles the DOM after the
+   * browser's one-time initial fragment-scroll already resolved (or fails
+   * to resolve) against the pre-hydration tree, so the native jump never
+   * lands on the final, hydrated element.
+   *
+   * `href` is kept on every anchor (so middle-click/ctrl-click "open in
+   * new tab", right-click "copy link", and no-JS/SEO crawling still work);
+   * this handler only intercepts a plain left-click to do the scroll
+   * itself and prevent the (broken) native jump from fighting it.
+   */
+  scrollToAnchor(href: string, event: MouseEvent): void {
+    if (!isPlatformBrowser(this.platformId)) {
+      return;
+    }
+    // Let modified/middle clicks behave natively (new tab, etc.).
+    if (event.defaultPrevented || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) {
+      return;
+    }
+    const id = href.startsWith('#') ? href.slice(1) : href;
+    if (!id) {
+      return;
+    }
+    const target = document.getElementById(id);
+    if (!target) {
+      return;
+    }
+    event.preventDefault();
+    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
   }
 
   toggleFaq(id: string): void {
