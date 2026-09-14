@@ -2430,13 +2430,17 @@ export class LandingHermosilloComponent implements OnInit {
 
   // Copy de lanzamiento provista por el cliente: la sede exacta todavía no
   // se revela a propósito (efecto "reveal" de marca), no es un dato
-  // faltante por descuido. La sede exacta (dirección/mapa) se agrega aquí
-  // (venueAddress/venueMapImage/venueImage) cuando el cliente la revele.
+  // faltante por descuido. venueImage usa el gráfico oficial de anuncio
+  // ("SEDE POR ANUNCIAR") provisto por el cliente — recorte vertical, que
+  // es el que mejor encaja en la caja tipo póster (aspect-ratio 1122/1402,
+  // object-fit: contain) de esta sección. La sede exacta (dirección/mapa)
+  // se agrega aquí (venueAddress/venueMapImage/venueImage) cuando el
+  // cliente la revele.
   @Input() venueText = 'Una experiencia de altura merece una sede majestuosa. En pocos días revelaremos el espectacular lugar que nos recibirá en Hermosillo.';
   @Input() venueAddress = '';
   @Input() venueMapImage = '';
-  @Input() venueImage = '';
-  @Input() venueImageAlt = 'La sede se revela muy pronto';
+  @Input() venueImage = 'assets/images/city/hermosillo-sede-por-anunciar.webp';
+  @Input() venueImageAlt = 'Sede por anunciar — Dinner in the Sky Hermosillo, 12 al 29 de noviembre 2026. Pronto conocerás dónde viviremos esta experiencia en las alturas.';
 
   @Input() convBarNote = 'Cupo limitado. Asegura tu lugar y vive Hermosillo desde el cielo.';
 
