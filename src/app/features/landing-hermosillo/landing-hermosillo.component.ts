@@ -2426,13 +2426,16 @@ export class LandingHermosilloComponent implements OnInit {
   @Input() worldImage = 'assets/images/city/hermosillo-hero.webp';
   @Input() worldImageAlt = 'Mesa de Dinner in the Sky suspendida junto a la bandera de México';
 
-  // Sin sede confirmada todavía (Tijuana sí tenía "Plaza Río Tijuana"
-  // confirmada) — placeholder honesto, no se inventa una sede.
-  @Input() venueText = 'La sede oficial de Dinner in the Sky Hermosillo se confirmará próximamente.';
+  // Ubicación general confirmada por el cliente: Hermosillo, Sonora. La sede
+  // exacta (dirección/mapa) todavía no está confirmada — se avisa al
+  // huésped que se le compartirá antes de su reservación, en vez de
+  // inventar una dirección. Cuando llegue la sede exacta, se agrega aquí
+  // (venueAddress/venueMapImage/venueImage) sin tocar el resto.
+  @Input() venueText = 'La experiencia se realizará en Hermosillo, Sonora. Te haremos llegar la ubicación exacta antes de tu reservación.';
   @Input() venueAddress = '';
   @Input() venueMapImage = '';
   @Input() venueImage = '';
-  @Input() venueImageAlt = 'Sede oficial — próximamente';
+  @Input() venueImageAlt = 'Ubicación exacta — se confirma antes de tu reservación';
 
   @Input() convBarNote = 'Cupo limitado. Asegura tu lugar y vive Hermosillo desde el cielo.';
 
