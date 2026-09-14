@@ -24,14 +24,13 @@ export const routes: Routes = [
         path: 'ciudad-de-mexico',
         loadComponent: () => import('./features/city/city.component').then(m => m.CityComponent)
       },
-      {
-        // Usa el mismo componente/diseño que ensenada, puebla y ciudad-de-mexico
-        // (ver src/app/features/city/city.component.ts). El componente dedicado
-        // anterior (HermosilloComponent, con formulario de registro) quedó sin
-        // usar — su código no se borró, solo se comentó (ver ese archivo).
-        path: 'hermosillo',
-        loadComponent: () => import('./features/city/city.component').then(m => m.CityComponent)
-      },
+      // 'hermosillo' ya NO vive aquí (ver ruta top-level más abajo, fuera de
+      // LayoutComponent) — se comenta en vez de borrar, mismo criterio que
+      // con HermosilloComponent antes:
+      // {
+      //   path: 'hermosillo',
+      //   loadComponent: () => import('./features/city/city.component').then(m => m.CityComponent)
+      // },
       {
         path: 'faq',
         loadComponent: () => import('./features/faq/faq.component').then(m => m.FAQComponent)
@@ -45,6 +44,19 @@ export const routes: Routes = [
         loadComponent: () => import('./features/not-found/not-found.component').then(m => m.NotFoundComponent)
       }
     ]
+  },
+  {
+    // Landing dedicado de una sola ciudad (mismo diseño/estructura que el
+    // repo "Dinner in the Sky Mexico Tijuana" — LandingTijuanaComponent),
+    // replicado para Hermosillo a pedido explícito. Va FUERA de
+    // LayoutComponent a propósito: LandingHermosilloComponent trae su propio
+    // header/footer (tj-header/tj-footer) — anidarlo bajo LayoutComponent
+    // duplicaría header/footer/botón de WhatsApp del sitio. Reemplaza la
+    // página anterior de Hermosillo (CityComponent, arriba comentada); el
+    // resto del sitio (home multi-ciudad, Ensenada/Puebla/CDMX) no cambia.
+    path: 'hermosillo',
+    loadComponent: () => import('./features/landing-hermosillo/landing-hermosillo.component').then(m => m.LandingHermosilloComponent),
+    data: { title: 'Dinner In The Sky — Hermosillo' }
   },
   {
     path: '**',
