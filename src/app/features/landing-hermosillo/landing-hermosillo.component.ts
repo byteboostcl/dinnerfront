@@ -654,6 +654,12 @@ export interface HermosilloTicketPackage {
       display: block;
     }
 
+    @media (max-width: 899px) {
+      .tj-header__logo {
+        max-width: 80%;
+      }
+    }
+
     .tj-header__city {
       font-size: 8.5px;
       letter-spacing: 0.42em;
