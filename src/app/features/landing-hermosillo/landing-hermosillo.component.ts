@@ -2365,11 +2365,16 @@ export class LandingHermosilloComponent implements OnInit {
   @Input() experienceText =
     'Una cena gourmet a 45 metros de altura, con gastronomía de autor, servicio de hospitality y la máxima seguridad certificada.';
 
-  // Solo la foto real ya aprobada para Hermosillo — a diferencia de Tijuana
-  // (evento ya realizado, con galería propia), aquí no hay fotos del evento
-  // todavía porque la temporada es en noviembre 2026.
+  // Fotos reales de la experiencia (sesión profesional aportada por el
+  // cliente): 1 foto hero (ancho completo, 16:10) + 4 fotos cuadradas en
+  // grid 2x2, usando tanto los recortes desktop como los mobile que se
+  // compartieron para esta sección.
   @Input() experiencePhotos: HermosilloPhoto[] = [
-    { src: 'assets/images/city/hermosillo-hero.webp', alt: 'Plataforma suspendida de Dinner in the Sky, junto a la bandera de México' }
+    { src: 'assets/images/city/hermosillo-experiencia-brindis.webp', alt: 'Pareja brindando con los brazos en alto durante el vuelo de Dinner in the Sky, atardecer dorado sobre Hermosillo' },
+    { src: 'assets/images/city/hermosillo-experiencia-vino-blanco.webp', alt: 'Pareja brindando con copas de vino blanco a bordo de la mesa suspendida' },
+    { src: 'assets/images/city/hermosillo-experiencia-vino-tinto.webp', alt: 'Pareja disfrutando copas de vino tinto con la puesta de sol de fondo' },
+    { src: 'assets/images/city/hermosillo-experiencia-familia.webp', alt: 'Madre e hija brindando con la ciudad de Hermosillo iluminada de fondo' },
+    { src: 'assets/images/city/hermosillo-experiencia-brindis-2.webp', alt: 'Pareja celebrando con los brazos en alto, vista de Hermosillo al atardecer' }
   ];
 
   @Input() menuIntro =
